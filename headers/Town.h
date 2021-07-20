@@ -33,8 +33,14 @@ public:
     void pullCitizens(); 
 
     //Getter function that gets converts the time to a string to be used in cout statements
-    std::string getTime();
-    
+    static std::string getTime();
+
+    //Getters for the induvidual time variables
+    int getDay() {return day;}
+    int getHour() {return hour;}
+    int getMinute() {return minute;}
+    int getSecond() {return second;}
+        
     //Setter function that advances the time by one second, will adjust the other time variables as needed
     void advanceTime();
 

@@ -19,10 +19,14 @@ void Hospital::addProviders(int doctors, int nurses) {
     }
 }
 
-//Function that will add a new patient to the priority list
+//Function that will add a new patient to the priority queue
 void Hospital::newPatient(std::string lastName) {
-    
+    //Will push a new patient to the queue using the patient's consructor, which will determine a priority
+    listOfPatients.emplace(new Patient(lastName));   
 }
 
 //Function that adds a treatment to the record
-void addTreatment (Patient patient);
+void Hospital::addTreatment (Patient patient) {
+    //Add a new record using the name, priority, and treatment time of the the patient
+    patientRecords.push_back(new Record(patient.getName(), patient.getPriority()))
+}

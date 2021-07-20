@@ -1,11 +1,15 @@
 //Header file for the hospital class, which will keep the providers, patients, and their records
 
 #ifndef HOSPITAL_H
-#define HOSPITALA_H
+#define HOSPITAL_H
 
 #include "iostream"
 #include "vector"
 #include "queue"
+
+//Import the associated classes
+#include "Patient.h"
+#include "Record.h"
 
 class Hospital
 {
@@ -14,7 +18,7 @@ private:
     std::vector<Providers> providerList; 
 
     //Create a priority queue for a patient list
-    std::priority_queue<Patient> listOfPatients; 
+    std::priority_queue<Patient, std::vector<Patient>, std::less<std::vector<Patient>::value_type>>listOfPatients; 
 
     //A vector of patient records for displaying later
     std::vector<Record> patientRecords; 
