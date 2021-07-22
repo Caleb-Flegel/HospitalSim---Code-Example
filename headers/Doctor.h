@@ -3,19 +3,19 @@
 #ifndef DOCTOR_H
 #define DOCTOR_H
 
+#include <iostream>
+
 //Importing provider
 #include "Provider.h"
 
-#include <iostream>
-
-class Doctor: public Provider
-{
+class Doctor: public Provider {
 private:
     
 public:
     Doctor(): Provider() {}
 
     //Doctor version of function that will set up treating the patient
+    //Note: code in provider.cpp
     void setTreatment();
 };
 

@@ -13,20 +13,20 @@ class Patient
 {
 private:
     //Surname for the patient
-    string name; 
+    string surName; 
 
     //Priority for the patient
     int priority; 
 
 public:
     //Base constructor that will fill in base stats
-    Patient(): name("Undefined"), priority(-1) {}
+    Patient(): surName("Undefined"), priority(-1) {}
 
     //Constructor that will be fed with a name and generate a random priority
     Patient(std::string name); 
 
     //Getters for the name and priority
-    string getName() {return name;}
+    string getName() {return surName;}
     int getPriority() {return priority;}
     
 };

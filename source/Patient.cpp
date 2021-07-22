@@ -4,7 +4,7 @@
 #include "..\headers\Patient.h"
 
 //Constructor that will be fed with a name and generate a random priority
-Patient::Patient(std::string name): name(name) {
+Patient::Patient(std::string name): surName(name) {
     //Will generate a random number between 0 and 9
     int priorityChk = rand() % 10;
 
