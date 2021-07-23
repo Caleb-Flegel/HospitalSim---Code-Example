@@ -8,6 +8,9 @@
 #include <string>
 #include <fstream>
 
+//Prototype for town class
+class Town;
+
 //Import the hospital class
 #include "Hospital.h"
 
@@ -19,7 +22,7 @@ private:
     static std::map <std::string, std::string> residentList; 
 
     //Has one hospital object
-    Hospital mainHospital; 
+    Hospital *mainHospital; 
 
     //Time variables that keep track of the time
     //These will be static, so they can be pulled by sub classes
@@ -41,8 +44,10 @@ private:
 public:
     //Consructor, which will take the number of desired doctors and nurses and pass it to the hospital class as well as fill the resident list map
     //sickChance will be a chance to get sick per day, will be converted to seconds in constructor 
-    Town(int docNum, int nurNum, int sickChance): emergencyChnce(sickChance * 24 * 60 * 60) {mainHospital.addProviders(docNum, nurNum);
-                                                                                             pullCitizens();}
+    Town(int docNum, int nurNum, int sickChance);
+    
+    //Deconstructor will delete the mainHospital pointer
+    ~Town();
 
     //Function that pulls the names of the town's citizens
     void pullCitizens();  
@@ -61,7 +66,7 @@ public:
     void advanceTime();
 
     //Getter function for the hospital, will be used to access the Hospital's variables and child classes
-    Hospital getHospital() {return mainHospital;}
+    Hospital getHospital();
 
     //A getter function for the resident list, will return the citizen based on their last name
     //Will be static so the providers and hospital can look up citizens. There won't be a problem as there is only one set of names

@@ -3,6 +3,27 @@
 //importing the file
 #include "..\headers\Town.h"
 
+//Restablishing static variables so the methods are able to work with them
+std::map <std::string, std::string> Town::residentList;
+
+int Town::second = 0;
+int Town::minute = 0;
+int Town::hour = 0;
+int Town::day = 0;
+
+std::string Town::time = "";
+
+//Consructor, which will take the number of desired doctors and nurses and pass it to the hospital class as well as fill the resident list map
+//sickChance will be a chance to get sick per day, will be converted to seconds in constructor 
+Town::Town(int docNum, int nurNum, int sickChance): emergencyChnce(sickChance * 24 * 60 * 60) {mainHospital = new Hospital; 
+                                                                                         mainHospital->addProviders(docNum, nurNum);
+                                                                                         pullCitizens();}
+//Deconstructor that delete's the town's hospital
+Town::~Town() {delete mainHospital;}
+
+//Getter function for the hospital, will be used to access the Hospital's variables and child classes
+Hospital Town::getHospital() {return *mainHospital;}
+
 //Function that pulls the names of the town's citizens
 void Town::pullCitizens(){
     //Create string variables that will hold the first and last names of the citizens
@@ -98,10 +119,10 @@ void Town::sickCheck() {
             //Means the resident was unlucky and will get sick or is already sick.
 
             //Another check will make sure the resident isn't already a patient
-            if (!mainHospital.patCheck(iter -> first)) {
+            if (!mainHospital->patCheck(iter -> first)) {
             
                 //Method will send the resident's last name to the hospital, which will create a patient
-                mainHospital.newPatient(iter -> first);
+                mainHospital->newPatient(iter -> first);
             }
         }
         //Go to the next name in the map
@@ -120,6 +141,9 @@ void Town::runWeek() {
         //Each pass by this while loop will consitute a second of simulation
         //Each second, each resident may get sick and the providers will either treat their patient or take in a new one when available
 
+        std::cout << time << "\n\n";
+
+        /*
         //Checking if any citizen gets sick, if any do, they will be added to the hospital's patient list
         sickCheck(); 
 
@@ -132,6 +156,7 @@ void Town::runWeek() {
             //Printing the new treatment records
             std::cout << std::endl << mainHospital.getRecords()[i] << std::endl;
         }
+        */
 
         //Advance time to the next second
         advanceTime();    

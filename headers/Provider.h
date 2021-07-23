@@ -8,9 +8,6 @@
 //Including the patient class as a provider will hold the patient they are treating
 #include "Patient.h"
 
-//Including hospital so the providers can access the patient list
-#include "Hospital.h"
-
 class Provider
 {
 protected:

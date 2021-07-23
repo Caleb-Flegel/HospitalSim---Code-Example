@@ -14,7 +14,7 @@ private:
     
 public:
     //No args constructor, which will also call the parent class constructor, which doesn't have any arguments either
-    Nurse(): Provider() {}
+    Nurse() {}
 
     //Nurse version of the set treatment function
     //note: code in provider.cpp

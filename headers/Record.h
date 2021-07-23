@@ -6,6 +6,9 @@
 #include <iostream>
 #include <string>
 
+//Prototype for the class so other classes can function
+class Record;
+
 //Importing town.h, so the class can access the first names of patients and time of the treatment
 #include "Town.h"
 
@@ -23,21 +26,15 @@ private:
 public:
 
     //Constructor that will be provided arguments from the hospital class
-    Record(std::string last, int priority, std::string time): name(last + " " + Town::getFirst(last)), priority(priority), time(Town::getTime()) {}
+    Record(std::string last, int priority, std::string time);
 
     //Getters for the variables
-    std::string getName () {return name;}
-    int getPriority() {return priority;}
-    std::string getTime() {return time;}
+    std::string getName ();
+    int getPriority();
+    std::string getTime();
 };
 
 //<< Operator overload that will print the record of the treatment
-std::ostream& std::operator<<(std::ostream& out, Record& rec) {
-    //Add info to the ostream
-    out << rec.getName() << " was treated for a priority " << rec.getPriority() << " emergency on " << rec.getTime(); 
-
-    //Return the output
-    return out; 
-}
+std::ostream& operator<< (std::ostream& out, Record& rec);
 
 #endif

@@ -3,27 +3,31 @@
 #ifndef HOSPITAL_H
 #define HOSPITAL_H
 
-#include "iostream"
-#include "vector"
-#include "queue"
+#include <iostream>
+#include <vector>
+#include <queue>
+
+//Prototype for the Hospital class that allows other classes to function without "knowing" hospital
+class Hospital;
 
 //Import the associated classes
 #include "Patient.h"
 #include "Record.h"
 #include "Provider.h"
-#include "Doctor.h"
-#include "Nurse.h"
-#include "Town.h"
 
 class Hospital
 {
 private:
     //Create aa vector of providers, so the user can input how many doctors and nurses they want
-    std::vector<Provider> providerList; 
+    std::vector<Provider*> providerList; 
 
     //A vector of patient records for displaying later
     //Needs to be static so the providers can add to the records
     static std::vector<Record> patientRecords; 
+
+    //Create a priority queue for a patient list
+    //Will be accessed by sub provider classes & there is only one hospital object, so it will be static
+    static std::priority_queue<Patient>listOfPatients; 
 
 public:
     //Default noargs constructor, the number of doctors and nurses will be filled later
@@ -32,9 +36,10 @@ public:
     //Getter for the patient records, which will allow for the printing of the records
     std::vector<Record> getRecords() {return patientRecords;}
 
-    //Create a priority queue for a patient list
-    //Will be accessed by sub provider classes & there is only one hospital object, so it will be static
-    static std::priority_queue<Patient>listOfPatients; 
+    //Getters and setters needed for sub-classes to access the list of patients
+    static int getPatientcount();
+    static Patient getPatient();
+    static void pushPatient(Patient P);
 
     //Fucntion that will add the providers to the provider list
     void addProviders(int doctors, int nurses); 

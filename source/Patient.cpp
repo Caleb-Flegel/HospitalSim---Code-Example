@@ -43,3 +43,15 @@ Patient::Patient(std::string name): surName(name) {
         break;
     }
 }
+
+//> operator that will allow for the patient class to be used in a priority queue
+bool operator> (const Patient& pat1, const Patient& pat2) {
+    //Will check if the patient has a higher priority than it's checked counterpart
+    return pat1.getPriority() > pat2.getPriority();
+}
+
+ //< operator that will be used in the priority queue of patients
+ bool operator< (const Patient& pat1, const Patient& pat2) {
+     //Return if the patient's priority is less than the priority of the patient that was checked against
+     return pat1.getPriority() < pat2.getPriority(); 
+ }

@@ -4,16 +4,14 @@
 #define PATIENT_H
 
 #include <iostream>
-#include <string>
-
-using std::string; 
+#include <string> 
 
 
 class Patient
 {
 private:
     //Surname for the patient
-    string surName; 
+    std::string surName; 
 
     //Priority for the patient
     int priority; 
@@ -26,15 +24,15 @@ public:
     Patient(std::string name); 
 
     //Getters for the name and priority
-    string getName() {return surName;}
-    int getPriority() {return priority;}
+    std::string getName() {return surName;}
+    int getPriority() const {return priority;}
     
 };
 
-//> operator that will allow for the patient class to be used in a priority queue
-bool std::operator> (Patient& pat1, Patient& pat2) {
-    //Will check if the patient has a higher priority than it's checked counterpart
-    return pat1.getPriority() >= pat2.getPriority();
-}
+    //> operator that will allow for the patient class to be used in a priority queue
+    bool operator> (const Patient& pat1, const Patient& pat2);
+
+    //< operator that will be used in the priority queue of patients
+    bool operator< (const Patient& pat1, const Patient& pat2);
 
 #endif

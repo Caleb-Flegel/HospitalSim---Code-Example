@@ -1,5 +1,4 @@
 //Header for the doctor child class to the provider class
-
 #ifndef DOCTOR_H
 #define DOCTOR_H
 
@@ -12,7 +11,7 @@ class Doctor: public Provider {
 private:
     
 public:
-    Doctor(): Provider() {}
+    Doctor() {}
 
     //Doctor version of function that will set up treating the patient
     //Note: code in provider.cpp

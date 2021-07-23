@@ -3,33 +3,53 @@
 //Importing the header
 #include "..\headers\Hospital.h"
 
+#include "..\headers\Doctor.h"
+#include "..\headers\Nurse.h"
+#include "..\headers\Town.h"
+
+std::vector<Record> Hospital::patientRecords; 
+
+std::priority_queue<Patient> Hospital::listOfPatients; 
+
+int Hospital::getPatientcount() {return listOfPatients.size();}
+
+Patient Hospital::getPatient() {
+    Patient P = listOfPatients.top();
+    listOfPatients.pop();
+    return P;
+}
+
+void Hospital::pushPatient(Patient P) {
+    listOfPatients.push(P);
+}
+
 //Fucntion that will add the providers to the provider list
 void Hospital::addProviders(int doctors, int nurses) {
     //Will add new instances of doctors and nurses to the providers vector using for loops
     //First the doctors
     for (int i = 0; i < doctors; i++)
     {
-        providerList.emplace_back(new Doctor());
+        providerList.push_back(new Doctor());
     }
 
     //Then the nurses
     for (int i = 0; i < nurses; i++)
     {
-        providerList.emplace_back(new Nurse());
+        providerList.push_back(new Nurse());
     }
 }
 
 //Function that will add a new patient to the priority queue
 void Hospital::newPatient(std::string lastName) {
     //Will push a new patient to the queue using the patient's consructor, which will determine a priority
-    listOfPatients.emplace(new Patient(lastName));   
+    listOfPatients.push(Patient(lastName));   
 }
 
 //Function that adds a treatment to the record
 void Hospital::addTreatment (Patient patient) {
     
     //Add a new record using the name, priority, and treatment time of the the patient
-    patientRecords.emplace_back(new Record(patient.getName(), patient.getPriority(), Town::getTime()));
+    patientRecords.push_back(Record(patient.getName(), patient.getPriority(), Town::getTime()));
 }
 
 //Function will check through the patient list to see if a citizen is in the queue 
@@ -78,14 +98,14 @@ void Hospital::providerDuties() {
     for (int i = 0; i < providerList.size(); i++)
     {
         //Check to see if the provider is avaliable
-        if (providerList[i].isAvalible()) {
+        if (providerList[i]->isAvalible()) {
             //Get a new patient if there is one available to be treated
-            providerList[i].setTreatment(); 
+            providerList[i]->setTreatment(); 
         }
         else {
             //Means the provider is in the middle of treating a patient, so treatment will continue
             //Run the treat function which will decrease the remaining treatment time and create a record if needed
-            providerList[i].treatPatient();
+            providerList[i]->treatPatient();
         }
     }
 }
