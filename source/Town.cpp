@@ -51,19 +51,12 @@ void Town::sickCheck() {
     //Create an iterator that will run through the map
     std::map<std::string, std::string>::iterator iter = residentList.begin(); 
 
-    //Emergency chance is how many people should get sick per hour, so will need to convert it to minutes
-    //int sickTest = emergencyChnce * 60; 
-
-    //Chance each person is infected per hour
-    double test = 2000/emergencyChnce;
-    //Chance each person is infected per minute
-    test /= 60; 
-
     //For loop will run through the residentList map
     for (int i = 0; i < residentList.size(); i++)
     {
-        //So now each person has a 1 in sickTest number of getting sick per minute, so will roll a rand and see if the person gets the 1 over sickTest
-        if ((rand() % static_cast<int>(10000*test)) == 0) {
+        //Mod a random number by the emergency chance of the town. The resident would have to be unlucky and get a 0 to get sick
+        //Note: had trouble finding a math equation that would convert avg number of visits per hour to the int in the mod function
+        if (rand() % (120000/emergencyChnce) == 0) {
             //Means the resident was unlucky and will get sick or is already sick.
 
             //Another check will make sure the resident isn't already a patient

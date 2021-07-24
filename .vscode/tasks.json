@@ -30,7 +30,7 @@
             "command": "C:/mingw-w64/mingw64/bin/g++.exe",
             "args": [
                 "-o",
-                "\"${workspaceFolder}\"/bin/testmain.exe\"",
+                "\"${workspaceFolder}/bin/testmain.exe\"",
                 "-I",
                 "\"${workspaceFolder}\"/headers",
                 "-I",

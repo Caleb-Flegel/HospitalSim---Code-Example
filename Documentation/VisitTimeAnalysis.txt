@@ -1,0 +1,23 @@
+*Note* See the screenshot file for the graph created
+
+Graph-
+    The graph seemed to form an exponential curve, which was a bit suprising for me. I expected a 
+bit more of a linear increase. I wouldn't have been suprised if there was a bit of an exponential
+curve, but the slope was much more than I expected. Another suprising thing was the datapoints on
+the 40 and 50 person per hour frequencies. I can't explain why both seem to deviate from the trendline
+so much. If anything, it seems that the 50 person frequency is closer to the line and the 40 person
+datapoint is off somehow. The problem may lie in how I designed my algorithm that randomly selects people
+to become patients.
+
+Doctor and Nurse Comparisons-
+*Note*: frequency of visits was set to 30
+1 Doctor, 1 Nurse: 1hr, 52min
+1 Doctor, 2 Nurses: 0hr, 21min
+2 Doctors, 1 Nurse: 0hr, 16min
+
+    The results of the doctor and nurse number comparion suprised me a bit. I expected that the 1 
+doctor, 2 nursevcombination would be the most efficient as the nurses have a shorter average treatment
+time. But it seems like high-priority patients having to wait for one doctor outwieighed the doctor's
+longer treat times. I was also a bit suprised on just how much of a difference is between having two
+and three providers. I expected maybe a 20 or 30 minute difference, but a difference of over and hour
+shows just how far a little extra help can go. 

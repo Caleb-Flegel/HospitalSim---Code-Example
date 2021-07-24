@@ -1,5 +1,4 @@
 //Header file that will store the time class, which will help with datermining and calculating times
-
 #ifndef TIME_H
 #define TIME_H
 
