@@ -1,6 +1,5 @@
 //Importing the classes to access their fuctions
 #include "../headers/Town.h"
-#include "../headers/Time.h"
 
 //Importing the googletest library
 #include "gtest/gtest.h"
@@ -17,7 +16,7 @@ TEST (timeFunction, OneDayTest) {
     }
 
     //Make sure the day has advanced
-    ASSERT_GT(temp.getDay(), 0)
+    ASSERT_GT(temp.getDay(), 0);
 }
 
 //Will make sure there are patients treated after 7 days
@@ -29,13 +28,19 @@ TEST (recordList, OneWeekTest) {
     temp.runWeek();
 
     //Make sure patients have been treated
-    ASSERT_GT(temp.getHospital().getRecords().size())
+    ASSERT_GT(temp.getHospital().getRecords().size(), 0);
 }
 
 //Making sure doctors take a patient
 TEST (providers, DoctorTake){
     //Create town with 1 doctor 
-    Town
+    Town tempTown (1, 0, 3); 
+
+    //Run the week
+    tempTown.runWeek(); 
+
+    //Expect that the doctor took a patient, which means the the remainign treat time is not -1
+    ASSERT_GT(tempTown.getHospital().getProviders()[0]->getTreatTime(), -1);
 }
 
 //testing main function

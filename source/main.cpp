@@ -1,3 +1,10 @@
+// Caleb Flegel
+// 7/17/21
+// <Course Code: CS-273-ACOL> 
+// License: Copyright 2021 Caleb Flegel 
+// Resources used: Book, C++ reference.com, Pete, Class Notes
+// Worked with: Pete Tucker on help with multiple issues
+// Final, 
 
 #include <iostream>
 //#include <ctime>
@@ -8,6 +15,8 @@
 #include "../headers/Town.h"
 
 using std::cout;
+
+/*
 
 int main () {
 
@@ -168,3 +177,4 @@ int main () {
 
     return 0;
 }
+*/

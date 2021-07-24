@@ -35,6 +35,9 @@ public:
 
     //Getter that will return the current patient
     Patient getPatient() {return currentPatient;}
+
+    //For testing, returns treat time
+    int getTreatTime() {return remainingTreatTime;}
 };
 
 #endif

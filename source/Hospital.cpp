@@ -199,3 +199,8 @@ void Hospital::providerDuties() {
         }
     }
 }
+
+//Function for testing, will pull the providers
+std::vector<Provider*> Hospital::getProviders() {
+    return providerList;
+}

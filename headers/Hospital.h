@@ -69,6 +69,9 @@ public:
 
     //Function that will run through the provider's actions, either treating their current patient or taking in a new patient
     void providerDuties();
+
+    //Function for testing, will pull the providers
+    std::vector<Provider*> getProviders();
 };
 
 #endif
