@@ -14,6 +14,9 @@ class Town;
 //Import the hospital class
 #include "Hospital.h"
 
+//Import time so the town can store the current time
+#include "Time.h"
+
 class Town
 {
 private:
@@ -24,19 +27,8 @@ private:
     //Has one hospital object
     Hospital *mainHospital; 
 
-    //Time variables that keep track of the time
-    //These will be static, so they can be pulled by sub classes
-    static int second;
-    static int minute;
-    static int hour;
-    static int day;
-
-    //Function that gets converts the time to a string to be used in cout statements
-    //Needs to be static to be accessed by other classes
-    static void setTime();
-
-    //String used to store the string version of the time, will be used in other classes, so it will be static
-    static std::string time;
+    //Current time
+    static Time currentTime;
 
     //Variable that will store the chance per second that a resident will need to visit the emergency room
     int emergencyChnce; 
@@ -52,21 +44,12 @@ public:
     //Function that pulls the names of the town's citizens
     void pullCitizens();  
 
-    //getter that returns the string form of time
-    //Will be static so the time can be used in other, non-child classes
-    static std::string getTime();
-
-    //Getters for the induvidual time variables
-    int getDay() {return day;}
-    int getHour() {return hour;}
-    int getMinute() {return minute;}
-    int getSecond() {return second;}
-        
-    //Setter function that advances the time by one second, will adjust the other time variables as needed
-    void advanceTime();
-
     //Getter function for the hospital, will be used to access the Hospital's variables and child classes
     Hospital getHospital();
+
+    //Getter for the current time
+    //Static so it can be accessed by the patient and record classes
+    static Time getTime();
 
     //A getter function for the resident list, will return the citizen based on their last name
     //Will be static so the providers and hospital can look up citizens. There won't be a problem as there is only one set of names

@@ -2,9 +2,14 @@
 
 //Importing the header
 #include "..\headers\Patient.h"
+//Importing town so the method can grab the current time
+#include "..\headers\Town.h"
 
 //Constructor that will be fed with a name and generate a random priority
 Patient::Patient(std::string name): surName(name) {
+    //Set the current time as the start time
+    startTime = Town::getTime();
+
     //Will generate a random number between 0 and 9
     int priorityChk = rand() % 10;
 

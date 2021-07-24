@@ -24,9 +24,8 @@ void Nurse::setTreatment() {
             //Set the temp patient as the current patient
             this -> currentPatient = temp; 
 
-            //Set a random treatment time between 1 and 10 minutes in seconds
+            //Set a random treatment time between 1 and 10 minutes
             remainingTreatTime = (rand() % 10) + 1;
-            remainingTreatTime *= 60; 
 
             //Set availability to false
             avalible = false;

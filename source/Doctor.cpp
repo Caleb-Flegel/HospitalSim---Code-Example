@@ -9,7 +9,7 @@
 void Doctor::setTreatment(){
 
     //Making sure there is a patient waiting before pulling the patient
-    if (Hospital::getPatientcount > 0) {
+    if (Hospital::getPatientcount() > 0) {
 
         //Will pull the patient from the top of the queue and set them as the current patient
         //There is no need to check the priority as a doctor can treat any priority
@@ -17,9 +17,6 @@ void Doctor::setTreatment(){
 
         //Generate a random treatment time between 1 and 20 minutes
         this -> remainingTreatTime = (rand() % 20) + 1;
-
-        //Multiply treatment time by 60 to convert minutes to seconds
-        this -> remainingTreatTime *= 60;
 
         //Set availible to false so there isn't another patient chosen
         this -> avalible = false;

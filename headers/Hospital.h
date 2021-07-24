@@ -29,6 +29,9 @@ private:
     //Will be accessed by sub provider classes & there is only one hospital object, so it will be static
     static std::priority_queue<Patient>listOfPatients; 
 
+    //Support function will convert inputted last names to uppercase so the input will be recognized with the patient records and resident map
+    void toUppercase (std::string& input);
+
 public:
     //Default noargs constructor, the number of doctors and nurses will be filled later
     Hospital() {}
@@ -47,9 +50,18 @@ public:
     //Function that will add a new patient to the priority list
     void newPatient(std::string lastName); 
 
+    //Function that will search if a last name is in the patient record
+    bool searchPatient(std::string lastName);
+
+    //Function that will print all records containing an inputted last name
+    void printNameRecord(std::string lastName);
+
     //Function that adds a treatment to the record
     //Will be static, so it can be used by the hospital's providers
     static void addTreatment (Patient patient);
+
+    //Function that will calculate the average treatment time of all completed patients' treatment times
+    Time getAvgTreatment();
 
     //Function will check through the patient list to see if a citizen is in the queue 
     //Will be used with the Town's sick check method to make sure residents don't get sick twice

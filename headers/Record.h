@@ -21,17 +21,18 @@ private:
     //Store the priority of the patient
     int priority;
 
-    //Store the string form of the time of treatment
-    std::string time; 
+    //Store the total time of treatment
+    Time totalTime; 
+
 public:
 
     //Constructor that will be provided arguments from the hospital class
-    Record(std::string last, int priority, std::string time);
+    Record(Patient treatedPat);
 
     //Getters for the variables
     std::string getName ();
     int getPriority();
-    std::string getTime();
+    Time getTotalTime();
 };
 
 //<< Operator overload that will print the record of the treatment
