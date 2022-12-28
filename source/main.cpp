@@ -16,8 +16,6 @@
 
 using std::cout;
 
-/*
-
 int main () {
 
     //Seeding random number generator 
@@ -177,4 +175,3 @@ int main () {
 
     return 0;
 }
-*/
